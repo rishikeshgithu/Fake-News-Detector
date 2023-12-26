@@ -5,7 +5,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import PassiveAggressiveClassifier
 from sklearn.metrics import accuracy_score, confusion_matrix
 
-df = pd.read_csv(r"C:\Users\Lenovo\Desktop\Fake news detection\news.csv")
+df = pd.read_csv(r"C:\Users\Lenovo\Documents\GitHub\Fake-News-Detector\Fake news detection\news.csv")
 
 print(df.shape)
 print(df.head())
@@ -19,7 +19,7 @@ tfidf_vectorizer = TfidfVectorizer(stop_words='english', max_df=0.7)
 tfidf_train = tfidf_vectorizer.fit_transform(x_train)
 tfidf_test = tfidf_vectorizer.transform(x_test)
 
-pac = PassiveAggressiveClassifier(max_iter=50)
+pac = PassiveAggressiveClassifier(max_iter=1)
 pac.fit(tfidf_train, y_train)
 
 y_pred = pac.predict(tfidf_test)
